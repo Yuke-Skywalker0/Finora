@@ -2,7 +2,8 @@ name: Deploy Finora frontend
 
 on:
   push:
-    branches: [main]
+    branches:
+      - main
   workflow_dispatch:
 
 permissions:
@@ -24,33 +25,41 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
 
-      - name: Prepare Finora site
+      - name: Prepare Finora frontend
         run: |
           rm -rf site
-          mkdir -p site
-          cp -R frontend/. site/
-          
-          echo "=== SITE CONTENT ==="
-          find site -maxdepth 2 -type f | sort
-          
-          echo "=== INDEX ==="
-          test -f site/index.html
-          
-          echo "=== VERSION ==="
-          test -f site/version.json
-          
-          echo "Frontend successfully prepared."
+          mkdir site
 
-      - name: Upload Finora artifact
+          cp -R frontend/. site/
+
+          echo "===== FINORA SITE ====="
+          find site -maxdepth 2 -type f | sort
+
+          echo "===== VERIFY ====="
+
+          if [ ! -f "site/index.html" ]; then
+            echo "ERROR: site/index.html missing"
+            exit 1
+          fi
+
+          if [ ! -f "site/version.json" ]; then
+            echo "ERROR: site/version.json missing"
+            exit 1
+          fi
+
+          echo "index.html: OK"
+          echo "version.json: OK"
+
+      - name: Upload Finora Pages artifact
         uses: actions/upload-pages-artifact@v4
         with:
           path: ./site
 
-      - name: Deploy Finora to GitHub Pages
+      - name: Deploy Finora
         id: deployment
         uses: actions/deploy-pages@v4
