@@ -1,4 +1,4 @@
-const CACHE = "finora-v9";
+const CACHE = "finora-v10";
 const ASSETS = ["./", "./index.html", "./css/main.css", "./js/config.js", "./js/api.js", "./js/app.js", "./manifest.webmanifest", "./version.json"];
 
 self.addEventListener("install", event => {

@@ -1,6 +1,6 @@
 {
-  "version": "9.0.0",
+  "version": "10.0.0",
   "name": "Finora",
-  "release": "mobile-update-gate",
+  "release": "github-pages-stable-paths-and-boot-fix",
   "releasedAt": "2026-09-28"
 }
