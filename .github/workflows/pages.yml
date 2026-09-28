@@ -1,25 +1,56 @@
 name: Deploy Finora frontend
+
 on:
   push:
     branches: [main]
+  workflow_dispatch:
+
 permissions:
   contents: read
   pages: write
   id-token: write
+
 concurrency:
   group: pages
   cancel-in-progress: true
+
 jobs:
   deploy:
+    runs-on: ubuntu-latest
+
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/configure-pages@v5
-      - uses: actions/upload-pages-artifact@v3
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Prepare Finora site
+        run: |
+          rm -rf site
+          mkdir -p site
+          cp -R frontend/. site/
+          
+          echo "=== SITE CONTENT ==="
+          find site -maxdepth 2 -type f | sort
+          
+          echo "=== INDEX ==="
+          test -f site/index.html
+          
+          echo "=== VERSION ==="
+          test -f site/version.json
+          
+          echo "Frontend successfully prepared."
+
+      - name: Upload Finora artifact
+        uses: actions/upload-pages-artifact@v4
         with:
-          path: ./frontend
-      - id: deployment
+          path: ./site
+
+      - name: Deploy Finora to GitHub Pages
+        id: deployment
         uses: actions/deploy-pages@v4
