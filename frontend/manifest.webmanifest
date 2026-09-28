@@ -1,0 +1,9 @@
+{
+  "name": "Finora",
+  "short_name": "Finora",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#fbfcf8",
+  "theme_color": "#43aeb0",
+  "description": "Gestione privata delle finanze personali."
+}
