@@ -4,7 +4,7 @@ function csrfToken() {
 }
 
 const API = {
-  base: window.FINORA_CONFIG.API_BASE_URL.replace(/\/$/, ""),
+  base: window.FINORA_CONFIG.API_BASE_URL || "",
 
   async request(path, options = {}) {
     const response = await fetch(`${this.base}${path}`, {

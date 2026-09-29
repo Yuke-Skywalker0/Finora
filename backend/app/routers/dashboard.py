@@ -85,7 +85,7 @@ def dashboard(user_id: str = Depends(current_user_id)):
 
     for delta in range(-5, 1):
         year, month = shift_month(current_year, current_month, delta)
-        labels.append(MONTHS_IT[month - 1])
+        labels.append(f"{MONTHS_IT[month - 1]} {str(year)[2:]}")
 
         selected = [
             item for item in items
@@ -280,7 +280,7 @@ def analytics(user_id: str = Depends(current_user_id)):
         y, m = shift_month(cur_y, cur_m, delta)
         rows = [x for x in items if (d:=date.fromisoformat(x["date"])).year == y and d.month == m]
         inc, exp, sav = totals(rows)
-        annual.append({"label": MONTHS_IT[m-1], "year": y, "month": m, "income": inc, "expenses": exp, "savings": sav})
+        annual.append({"label": f"{MONTHS_IT[m-1]} {str(y)[2:]}", "year": y, "month": m, "income": inc, "expenses": exp, "savings": sav})
 
     avg_monthly_expense = round(sum(x["expenses"] for x in annual)/len(annual), 2) if annual else 0
     avg_monthly_income = round(sum(x["income"] for x in annual)/len(annual), 2) if annual else 0
@@ -306,7 +306,7 @@ def analytics(user_id: str = Depends(current_user_id)):
             "expenses_percentage": round((ce-pe)/pe*100,1) if pe else None
         },
         "forecast": {"daily_expense": daily_expense, "end_of_month_expenses": forecast},
-        "averages": {"monthly_income": avg_monthly_income, "monthly_expenses": avg_monthly_expense},
+        "averages": {"monthly_income": avg_monthly_income, "monthly_expenses": avg_monthly_expense, "monthly_savings": round(avg_monthly_income-avg_monthly_expense,2)},
         "year": {"income": annual_income, "expenses": annual_expenses, "savings": round(annual_income-annual_expenses,2)},
         "net_worth": net_worth,
         "top_categories": top_categories,

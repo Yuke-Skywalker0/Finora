@@ -22,3 +22,42 @@
 .update-progress{height:7px;border-radius:99px;background:var(--surface-2);overflow:hidden;border:1px solid var(--line);margin:0 0 15px}.update-progress span{display:block;width:35%;height:100%;border-radius:inherit;background:linear-gradient(90deg,var(--mint),#74cdbf);animation:updateProgress 1.5s ease-in-out infinite}
 .update-status{display:flex;justify-content:center;align-items:center;gap:8px;color:var(--muted);font-size:11px;min-height:20px}.update-spinner{width:14px;height:14px;border:2px solid #dce9e6;border-top-color:var(--mint);border-radius:50%;animation:spin .75s linear infinite}.update-gate .primary{margin-top:18px}.update-gate.is-error .update-progress span{animation:none;width:100%;background:var(--coral)}.update-gate.is-ready .update-progress span{animation:none;width:100%}@keyframes updateProgress{0%{transform:translateX(-120%);width:32%}50%{transform:translateX(120%);width:45%}100%{transform:translateX(320%);width:32%}}@keyframes spin{to{transform:rotate(360deg)}}
 body.dark .update-gate{background:rgba(13,22,21,.98)}
+
+
+/* Finora v11 — unified Render UI polish */
+.google-login{display:flex;align-items:center;justify-content:center;gap:12px;width:min(100%,360px);margin:22px auto 14px;padding:14px 18px;border:1px solid rgba(40,65,65,.12);border-radius:14px;background:#fff;color:#172120;text-decoration:none;font-weight:750;box-shadow:0 10px 28px rgba(32,70,67,.08);transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease}
+.google-login:hover{transform:translateY(-1px);box-shadow:0 14px 32px rgba(32,70,67,.12);border-color:rgba(69,173,164,.45)}
+.google-login .google-logo{display:grid;place-items:center;width:26px;height:26px;border-radius:50%;font-weight:800;font-size:17px;color:#4285f4;background:#f4f7fb}
+.google-login svg{width:18px;height:18px;margin-left:auto}
+.nav-icon svg,.mini-icon svg,.round-btn svg,.icon-btn svg,.qa-icon svg,.metric-icon svg,.account-icon svg,.transaction-icon svg,.smart-insight-icon svg{width:18px;height:18px;stroke-width:2}
+.nav-icon{display:inline-flex;align-items:center;justify-content:center}
+.transaction-icon{display:grid;place-items:center}
+.analytics-kpis{grid-template-columns:repeat(6,minmax(0,1fr))}
+@media(max-width:1200px){.analytics-kpis{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:700px){.analytics-kpis{grid-template-columns:repeat(2,minmax(0,1fr))}.google-login{width:100%}}
+.dark .google-login{background:#151d1d;color:#eef7f4;border-color:rgba(255,255,255,.1)}
+
+/* FINORA v12 — visual system inspired by the supplied high-fidelity graphics */
+:root{--bg:#f6f9f8;--surface:#ffffff;--surface-2:#f7faf9;--text:#17322f;--muted:#7b8b88;--line:#e3ebe8;--mint:#45ada4;--mint-dark:#318d85;--mint-soft:#e3f4f1;--coral:#d88982;--coral-soft:#faecea;--purple:#8e81c8;--blue:#6b9fc8;--shadow:0 10px 32px rgba(27,61,56,.055);--radius:20px}
+body{background:radial-gradient(circle at 85% -10%,rgba(69,173,164,.07),transparent 32%),var(--bg)}
+.sidebar{width:258px;padding:24px 15px 18px;background:rgba(255,255,255,.95);box-shadow:8px 0 28px rgba(31,67,62,.025)}
+.sidebar-top{padding:0 9px 22px}.brand{font-size:21px}.brand-mark{width:35px;height:35px;border-radius:11px}
+.workspace{margin-top:22px;border-radius:12px;padding:9px 10px}
+.nav-item{padding:10px 12px;border-radius:11px;font-size:12px}.nav-item.active{box-shadow:inset 0 0 0 1px rgba(69,173,164,.04)}
+.main{margin-left:258px;padding:0 34px 44px;max-width:1660px}
+.topbar{height:96px;padding-bottom:8px}.greeting h1{font-size:24px}.greeting p{font-size:11px}
+.top-actions{gap:9px}.top-search{height:40px;width:min(330px,28vw);display:flex;align-items:center;gap:8px;padding:0 12px;border:1px solid var(--line);background:var(--surface);border-radius:12px;box-shadow:0 5px 15px rgba(35,65,61,.035)}.top-search svg{width:16px;height:16px;color:#90a09d;flex:0 0 auto}.top-search input{width:100%;border:0;outline:0;background:transparent;color:var(--text);font-size:10px}.top-search input::placeholder{color:#9aa8a5}.top-search-mobile{display:none}.month-switcher{height:40px;display:flex;align-items:center;gap:2px;padding:0 5px;border:1px solid var(--line);background:var(--surface);border-radius:12px;font-size:10px;font-weight:750;color:#5f716e;white-space:nowrap}.month-arrow{width:28px;height:28px;display:grid;place-items:center;border-radius:8px;background:transparent;color:#71827f}.month-arrow:hover{background:var(--surface-2);color:var(--text)}.month-arrow svg{width:14px;height:14px}
+.primary{border-radius:12px;padding:11px 14px}.primary svg{width:15px;height:15px;vertical-align:-3px}.round-btn svg{width:17px;height:17px}
+.hero-row{grid-template-columns:minmax(0,1.7fr) minmax(290px,.8fr);gap:14px}.balance-card{min-height:178px;padding:24px 27px;border-radius:22px;background:linear-gradient(135deg,#244a45 0%,#34746c 100%);box-shadow:0 18px 38px rgba(36,83,76,.14)}.balance-card strong{font-size:34px;margin:17px 0 20px}.balance-card:before{content:"";position:absolute;right:22px;bottom:-4px;width:260px;height:92px;border-top:2px solid rgba(164,234,220,.45);border-radius:50%;transform:rotate(-7deg);box-shadow:0 -10px 0 -1px rgba(164,234,220,.12)}
+.quick-actions{gap:10px}.quick-actions button{border-radius:17px;padding:16px 17px}.qa-icon{width:36px;height:36px;border-radius:11px}.qa-icon svg{width:18px;height:18px}
+.summary-grid{gap:10px;margin:14px 0}.metric{border-radius:16px;padding:15px 16px}.metric-icon{width:29px;height:29px;margin-bottom:10px}.metric-icon svg{width:15px;height:15px}.metric strong{font-size:19px}
+.content-grid{grid-template-columns:minmax(0,1.55fr) minmax(290px,.72fr);gap:14px}.panel{border-radius:20px;padding:19px;box-shadow:var(--shadow)}.panel-head h2,.page-title h2{font-size:17px}.panel-head p,.page-title p{font-size:10px}.chart-box{height:260px}.chart-box.small{height:205px}.recent-panel{margin-top:14px}
+.period-btn{display:inline-flex;align-items:center;gap:5px}.period-btn svg{width:14px;height:14px}.filters{margin:14px 0 10px}.search-field{height:36px;border-radius:10px}.filter-btn{border-radius:10px}
+.analytics-kpi{border-radius:16px;padding:16px}.analytics-kpi strong{font-size:20px}.analytics-grid,.analytics-lower{gap:14px}.insight-card{border-radius:18px}
+.planning-kpi{border-radius:17px;padding:17px}.planning-layout{gap:14px}.calendar-panel{min-height:520px}.calendar-day{border-radius:12px}
+.modal-card{border-radius:22px;box-shadow:0 30px 80px rgba(19,44,40,.18)}.type-choice{border-radius:11px}.amount-input{border-radius:13px}
+.mobile-nav{box-shadow:0 -8px 28px rgba(28,59,55,.06)}
+.dark{--bg:#101817;--surface:#172320;--surface-2:#1c2a27;--text:#edf7f4;--muted:#91a49f;--line:#293a36}.dark .top-search,.dark .month-switcher{background:var(--surface);border-color:var(--line)}.dark .top-search input{color:var(--text)}.dark .month-arrow:hover{background:var(--surface-2)}
+@media(max-width:1200px){.top-search{width:220px}.month-switcher{display:none}.main{padding-left:26px;padding-right:26px}}
+@media(max-width:900px){.top-search{display:none}.top-search-mobile{display:grid}.main{margin-left:220px}.sidebar{width:220px}}
+@media(max-width:760px){.main{margin-left:0;padding:0 14px 94px}.topbar{height:82px}.top-actions{margin-left:auto}.top-search-mobile{display:grid}.hero-row{grid-template-columns:1fr}.balance-card{min-height:165px}.balance-card strong{font-size:31px}.content-grid{grid-template-columns:1fr}.chart-box{height:235px}.chart-box.small{height:190px}.summary-grid{grid-template-columns:repeat(2,1fr)}.mobile-nav{grid-template-columns:1fr 1fr 1fr 1fr 1fr}.mobile-nav button{min-width:0}.mobile-nav button svg{width:18px;height:18px}.mobile-add svg{width:22px;height:22px}.greeting{display:none}}

@@ -1,4 +1,5 @@
+// Finora v11 is served by the same Render origin as the API.
+// OAuth secrets live only on Render; no Google credential is shipped to the browser.
 window.FINORA_CONFIG = {
-  API_BASE_URL: "https://finora-nekg.onrender.com",
-  GOOGLE_CLIENT_ID: "852926571436-6bm4m63ojfrf1nn4mll8r1ocdbck7dle.apps.googleusercontent.com"
+  API_BASE_URL: ""
 };
